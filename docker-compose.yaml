@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  nginx:
+    ports:
+      - 80:80
+    image: zatochi13/nginx-site-visit
