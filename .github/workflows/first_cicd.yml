@@ -1,0 +1,9 @@
+name:  "CI CD pipline to update prod. code in VM in VKCS"
+on: push
+
+jobs:
+  test_job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Just to see what is going on"
+        run: echo "Hello i am ${{ github.actor }}"
