@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v5
         with: 
           context: frontend/zatochi-site/
-          file: Dockerfile
+          file: frontend/zatochi-site/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nginx-site-visit:latest
         
