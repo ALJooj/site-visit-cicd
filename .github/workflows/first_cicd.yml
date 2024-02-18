@@ -1,5 +1,9 @@
 name:  "CI CD pipline to update prod. code in VM in VKCS"
-on: push
+on: 
+  push:
+    branches:
+      - "main"
+
 
 jobs:
   test_job_1:
@@ -7,3 +11,25 @@ jobs:
     steps:
       - name: "Just to see what is going on"
         run: echo "Hello i am ${{ github.actor }}"
+
+  build_svelte_static_file:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: "download to runer"
+        uses: actions/checkout@v4
+      - name: "login to docker"
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      - name: "Set up Docker Buildx"
+        uses: docker/setup-buildx-action@v3
+      - name: "build and push to docker hub"
+        uses: docker/build-push-action@v5
+        with: 
+          context: /frontend
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nginx-site-visit:latest
+        
+
