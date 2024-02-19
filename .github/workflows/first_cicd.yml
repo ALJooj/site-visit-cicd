@@ -36,9 +36,5 @@ jobs:
     runs-on: self-hosted
     needs: build_svelte_static_file
     steps:
-  #    - name: "run script that does rebuild"
-  #      run: ./rebuild.sh
-       - name: "Some test before..."
-         run: whoami
-       - run: ls -l
-       - run: pwd
+       - name: "run script that does rebuild"
+         run: ./rebuild.sh
