@@ -41,3 +41,4 @@ jobs:
        - name: "Some test before..."
          run: whoami
        - run: ls -l
+       - run: pwd
