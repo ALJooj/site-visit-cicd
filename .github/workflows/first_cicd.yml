@@ -3,11 +3,9 @@ on:
   push:
     branches:
       - "main"
-
-
 jobs:
   test_job_1:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: "Just to see what is going on"
         run: echo "Hello i am ${{ github.actor }}"
@@ -34,4 +32,8 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nginx-site-visit:latest
         
-
+  # integrate_to_prod:
+  #   runs-on: self-hosted
+  #   steps:
+  #     - name: "run script that does rebuild"
+  #       run: ./rebuild.sh
